@@ -172,6 +172,11 @@ window.addEventListener("scroll",()=>{
     });
 
 });
+
+// ============================
+// Particles Animation
+// ============================
+
 tsParticles.load("particles-js", {
   background: {
     color: {
@@ -202,55 +207,83 @@ tsParticles.load("particles-js", {
     }
   }
 });
+
+// ============================
 // Live Clock
+// ============================
+
 function updateClock(){
-    const now = new Date();
-    document.getElementById("clock").textContent =
-        now.toLocaleTimeString();
+    const clockElement = document.getElementById("clock");
+    if(clockElement){
+        const now = new Date();
+        clockElement.textContent = now.toLocaleTimeString();
+    }
 }
 setInterval(updateClock,1000);
 updateClock();
 
+// ============================
 // Greeting
-const hour = new Date().getHours();
+// ============================
 
-if(hour<12){
-    greeting.innerHTML="Good Morning ☀️";
-}
-else if(hour<18){
-    greeting.innerHTML="Good Afternoon 🌤️";
-}
-else{
-    greeting.innerHTML="Good Evening 🌙";
+const greetingElement = document.getElementById("greeting");
+if(greetingElement){
+    const hour = new Date().getHours();
+    if(hour<12){
+        greetingElement.innerHTML="Good Morning ☀️";
+    }
+    else if(hour<18){
+        greetingElement.innerHTML="Good Afternoon 🌤️";
+    }
+    else{
+        greetingElement.innerHTML="Good Evening 🌙";
+    }
 }
 
+// ============================
 // Counter
+// ============================
+
 function counter(id,target){
 
-let count=0;
+    let count=0;
 
-const interval=setInterval(()=>{
+    const interval=setInterval(()=>{
 
-count++;
+        count++;
 
-document.getElementById(id).innerHTML=count+"+";
+        const element = document.getElementById(id);
+        if(element){
+            element.innerHTML = count + "+";
+        }
 
-if(count>=target){
-clearInterval(interval);
+        if(count>=target){
+            clearInterval(interval);
+        }
+
+    },50);
+
 }
 
-},50);
+const projectsCountElement = document.getElementById("projectsCount");
+const skillsCountElement = document.getElementById("skillsCount");
 
+if(projectsCountElement){
+    counter("projectsCount",10);
 }
 
-counter("projectsCount",10);
-counter("skillsCount",4);
+if(skillsCountElement){
+    counter("skillsCount",4);
+}
 
+// ============================
 // Copy Email
-document.getElementById("copyEmail").onclick=()=>{
+// ============================
 
-navigator.clipboard.writeText("manthanjatkar27@gmail.com");
-
-alert("Email Copied!");
-
-};
+const copyEmailButton = document.getElementById("copyEmail");
+if(copyEmailButton){
+    copyEmailButton.onclick = () => {
+        navigator.clipboard.writeText("manthanjatkar27@gmail.com");
+        alert("Email Copied!");
+    };
+}

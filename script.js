@@ -202,3 +202,55 @@ tsParticles.load("particles-js", {
     }
   }
 });
+// Live Clock
+function updateClock(){
+    const now = new Date();
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString();
+}
+setInterval(updateClock,1000);
+updateClock();
+
+// Greeting
+const hour = new Date().getHours();
+
+if(hour<12){
+    greeting.innerHTML="Good Morning ☀️";
+}
+else if(hour<18){
+    greeting.innerHTML="Good Afternoon 🌤️";
+}
+else{
+    greeting.innerHTML="Good Evening 🌙";
+}
+
+// Counter
+function counter(id,target){
+
+let count=0;
+
+const interval=setInterval(()=>{
+
+count++;
+
+document.getElementById(id).innerHTML=count+"+";
+
+if(count>=target){
+clearInterval(interval);
+}
+
+},50);
+
+}
+
+counter("projectsCount",10);
+counter("skillsCount",4);
+
+// Copy Email
+document.getElementById("copyEmail").onclick=()=>{
+
+navigator.clipboard.writeText("manthanjatkar27@gmail.com");
+
+alert("Email Copied!");
+
+};

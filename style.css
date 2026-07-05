@@ -508,6 +508,8 @@ nav{
     top:0;
     left:0;
     z-index:-1;
+}
+
 .info-bar{
     display:flex;
     justify-content:space-around;
